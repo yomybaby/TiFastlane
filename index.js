@@ -84,6 +84,13 @@ function bumpBundleVersion(){
 
       return before + CFBundleVersion + after;
   });
+  tiapp = tiapp.replace(/(<manifest android:versionCode=")([^< ]+)(">)/mg, function (match, before, CFBundleVersion, after) {
+      CFBundleVersion = parseInt(CFBundleVersion, 10) + 1;
+
+      console.log(chalk.green('Bumped android:versionCode to: ' + CFBundleVersion));
+
+      return before + CFBundleVersion + after;
+  });
 
   fs.writeFileSync('tiapp.xml', tiapp);
 };
