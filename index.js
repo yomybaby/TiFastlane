@@ -241,7 +241,7 @@ function uploadBetaTestIPA(_skip){
             }
             
             var buildArgs = [cfg.cli == "appc"?'run':'build'];
-            var buildArgsDetail = '-p ios -T dist-adhoc -O ./dist';
+            var buildArgsDetail = cfg.ios_build_args?cfg.ios_build_args:'-p ios -T dist-adhoc -O ./dist';
             buildArgs = buildArgs.concat(buildArgsDetail.split(' '));
             
             exec(cfg.cli, buildArgs, null, function(e){
@@ -595,7 +595,7 @@ exports.send = function(opts){
                 }
 
                 var buildArgs = [cfg.cli == "appc"?'run':'build'];
-                var buildArgsDetail = '-p ios -T dist-adhoc -O ./dist';
+                var buildArgsDetail = cfg.ios_build_args?cfg.ios_build_args:'-p ios -T dist-adhoc -O ./dist';
                 buildArgs = buildArgs.concat(buildArgsDetail.split(' '));
 
                 exec(cfg.cli, buildArgs, null, function(e){
