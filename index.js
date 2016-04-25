@@ -193,6 +193,16 @@ function uploadBetaTestIPA(_skip){
           , '-u' , cfg.apple_id
           , '-i' , "../../dist/" + tiapp.name + ".ipa"
         ];
+        
+        if(cfg.team_name){
+          pilotArgs.push('-r');
+          pilotArgs.push(cfg.team_name);
+        }
+        
+        if(cfg.team_id){
+          pilotArgs.push('-q');
+          pilotArgs.push(cfg.team_id);
+        }
 
         exec('pilot', pilotArgs, { cwd: appDeliveryDir }, function(e){
             console.log(chalk.green('\nDone\n'));
