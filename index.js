@@ -583,6 +583,10 @@ exports.send = function(opts){
         var initArgs = [
             'deliver'
         ];
+        
+        var pilotArgs = [
+            'pilot'
+        ];
 
         if( sendipa ){
             initArgs.push('-i', '../../dist/' + tiapp.name + '.ipa');
